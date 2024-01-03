@@ -11,9 +11,9 @@ font xft:DejaVuSans 10.5
 # border_radius 15 
 
 # Set inner/outer gaps
-gaps inner 10
-gaps outer 4
-gaps bottom 40
+# gaps inner 10
+# gaps outer 4
+# gaps bottom 40
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps inverse_outer
@@ -25,34 +25,24 @@ smart_borders no_gaps
 set $monitor1 eDP-1
 set $monitor2 HDMI-1-0
 
-set $res1 
-set $res2 
-
-set $mod Mod1
-set $mod2 Mod4
+set $mod Mod4
+set $mod2 Mod1
 
 # AUTOSTART
 
-# exec --no-startup-id ~/.config/rofi/scripts/i3lock.sh
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/scripts/i3lock.sh --nofork
 exec --no-startup-id picom -b
-exec_always --no-startup-id nm-applet
+# exec_always --no-startup-id nm-applet
 
-exec_always --no-startup-id ibus-daemon -drx &
+# exec_always --no-startup-id ibus-daemon -drx &
 
-# exec_always killall polybar; polybar main
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always killall polybar; polybar main
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 ## KEY BINDINGS 
-#I dont like my rofi to spawn on my other monitors so I suggest changing your monitors or just deleting -monitor flag
-
 floating_modifier $mod 
 bindsym $mod+y border none
 bindsym $mod+c exec --no-startup-id killall dunst; exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
-bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -columns 3 -lines 9
-bindsym $mod+Ctrl+l exec --no-startup-id ~/.config/i3/scripts/i3lock.sh
-bindsym $mod+t exec --no-startup-id ~/.colors/scripts/change-theme.sh
-
-
+bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -columns 3 -lines 9
 
 # Use pactl to adjust volume in PulseAudio.:
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -64,7 +54,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-bindsym $mod+Shift+d exec --no-startup-id   ~/.config/i3/scripts/screencheck.sh
 bindsym --release $mod+x exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 
 bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboard.sh
@@ -140,7 +129,7 @@ bindsym $mod+F1 layout toggle split
 # reload the configuration file
 # bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod2+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -158,13 +147,13 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # back to normal: Enter or Escape or $mod2+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $mod2+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod2+r mode "resize"
 
 
 # tiling rules 
@@ -264,6 +253,6 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
-#bar{
-#	tray_output primary
-#}
+bar{
+	tray_output primary
+}
