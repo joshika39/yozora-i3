@@ -32,16 +32,13 @@ set $mod2 Mod1
 
 exec --no-startup-id picom -b
 # exec_always --no-startup-id nm-applet
-
 # exec_always --no-startup-id ibus-daemon -drx &
-
-exec_always killall polybar; polybar main
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ## KEY BINDINGS 
 floating_modifier $mod 
 bindsym $mod+y border none
-bindsym $mod+c exec --no-startup-id killall dunst; exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
+# bindsym $mod+c exec --no-startup-id killall dunst; exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
 bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -columns 3 -lines 9
 
 # Use pactl to adjust volume in PulseAudio.:
@@ -63,8 +60,8 @@ bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboar
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+f exec kitty ranger
+bindsym $mod+q exec kitty
+bindsym $mod+e exec kitty ranger
 
 mode "layouts"{
 
@@ -90,7 +87,7 @@ mode "layouts"{
 bindsym $mod+Shift+s exec --no-startup-id source ~/.config/i3/scripts/save-layout.sh
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+c kill
 
 # change focus
 bindsym $mod+j focus left
