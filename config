@@ -11,8 +11,8 @@ font xft:DejaVuSans 10.5
 # border_radius 15 
 
 # Set inner/outer gaps
-# gaps inner 10
-# gaps outer 4
+gaps inner 10
+gaps outer 4
 # gaps bottom 40
 
 # Smart gaps (gaps used if only more than one container on the workspace)
@@ -33,7 +33,7 @@ set $mod2 Mod1
 exec --no-startup-id picom -b
 # exec_always --no-startup-id nm-applet
 # exec_always --no-startup-id ibus-daemon -drx &
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/i3/scripts/background.sh
 
 ## KEY BINDINGS 
 floating_modifier $mod 
