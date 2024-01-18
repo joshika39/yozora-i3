@@ -51,7 +51,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-bindsym --release $mod+x exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
+bindsym --release Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 
 bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboard.sh
 
