@@ -35,22 +35,22 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ibus-daemon -drx &
 exec_always --no-startup-id $HOME/.config/i3/scripts/background.sh
 
-## KEY BINDINGS 
 floating_modifier $mod 
-bindsym $mod+y border none
-# bindsym $mod+c exec --no-startup-id killall dunst; exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
-bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -columns 3 -lines 9
 
-# Use pactl to adjust volume in PulseAudio.:
+## KEY BINDINGS FOR APPS
+bindsym $mod+y border none
+bindsym $mod+d exec --no-startup-id killall dunst; exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
+bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -columns 3 -lines 9
+bindsym $mod+c kill
+bindsym $mod+Shift+c --release exec --no-startup-id xcolor | -selection clipboard
+
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
 bindsym --release Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 
 bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboard.sh
@@ -64,7 +64,6 @@ bindsym $mod+q exec kitty
 bindsym $mod+e exec kitty ranger
 
 mode "layouts"{
-
 	bindsym 1 exec --no-startup-id ~/.config/i3/scripts/save-layout.sh 1
 	bindsym 2 exec --no-startup-id ~/.config/i3/scripts/save-layout.sh 2
 	bindsym 3 exec --no-startup-id ~/.config/i3/scripts/save-layout.sh 3
@@ -74,40 +73,45 @@ mode "layouts"{
 	bindsym w exec --no-startup-id ~/.config/i3/scripts/open-layout.sh 2
 	bindsym e exec --no-startup-id ~/.config/i3/scripts/open-layout.sh 3
 	bindsym r exec --no-startup-id ~/.config/i3/scripts/open-layout.sh 4
-
 	bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+Shift+s mode "default"
-
 }
 
 
 # Layout management
-
 bindsym $mod+Shift+s exec --no-startup-id source ~/.config/i3/scripts/save-layout.sh
 
-# kill focused window
-bindsym $mod+c kill
-
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# alternatively, you can use the arrow keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# alternatively, you can use the arrow keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
 # split in horizontal orientation
 bindsym $mod+h exec --no-startup-id "i3-msg split h && dunstify horizonstal split"
 
 # split in vertical orientation
-bindsym $mod+v exec --no-startup-id "i3-msg split v && dunstify vertical split"
+bindsym $mod+j exec --no-startup-id "i3-msg split v && dunstify vertical split"
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+v floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -123,9 +127,6 @@ bindsym $mod+F3 layout stacked
 bindsym $mod+F2 layout tabbed
 bindsym $mod+F1 layout toggle split
 
-# reload the configuration file
-# bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod2+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
