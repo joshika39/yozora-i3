@@ -60,7 +60,7 @@ bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboar
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+q exec kitty
+bindsym $mod+q exec kitty tmux
 bindsym $mod+e exec kitty ranger
 
 mode "layouts"{
