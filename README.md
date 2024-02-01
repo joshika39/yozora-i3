@@ -4,3 +4,6 @@
 - rofi
 - dunst
 - picom
+- xclip
+- imagemagick
+- tmux
