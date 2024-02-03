@@ -42,7 +42,7 @@ bindsym $mod+y border none
 bindsym $mod+d exec --no-startup-id killall dunst; exec --no-startup-id rofi -show drun -theme ~/.config/rofi/launcher.rasi
 bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -columns 3 -lines 9
 bindsym $mod+c kill
-bindsym $mod+Shift+c --release exec --no-startup-id xcolor | -selection clipboard
+bindsym $mod+Shift+c --release exec --no-startup-id xcolor --selection clipboard
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
