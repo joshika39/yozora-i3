@@ -7,3 +7,4 @@
 - xclip
 - imagemagick
 - tmux
+- xcolor
