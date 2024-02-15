@@ -11,13 +11,16 @@ source "$HOME/.config/i3/.env"
 
 # Get a random image from the unsplash api use the $ACCESS_KEY
 
-# Get the image fron a GET endpoint
-image_url=$(curl https://api.unsplash.com/photos/random?client_id=$ACCESS_KEY&collections=11445541&orientation=landscape | jq -r '.urls.full')
+url="https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&collections=11445541&orientation=landscape"
 
+# Get the image fron a GET endpoint
+image_url=$(curl $url | jq -r '.urls.full')
 image_path="$HOME/.config/i3/background.jpg"
 
-# Download the image
+[ -z "$image_url" ] && echo "Image url is empty" && exit 1
 
+
+# Download the image
 curl -o $image_path $image_url
 
 # Get the connected monitor names
