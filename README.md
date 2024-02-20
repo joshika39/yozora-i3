@@ -1,17 +1,22 @@
 # Yozora's i3 config
 
-## Fonts used:
-- ttf-jetbrains-mono
-- ttf-jetbrains-mono-nerd
-- noto-fonts-emoji
-- ttf-nerd-fonts-symbols
-- japanese-fonts: `otf-ipaexfont adobe-source-han-sans-jp-fonts noto-fonts-cjk`
-- noto-fonts-cjk
-## Dependencies:
-- rofi
-- dunst
-- picom
-- xclip
-- imagemagick
-- tmux
-- xcolor
+## Installation
+
+Have the [main config cloned](https://github.com/joshika39/yozora):
+```sh
+git clone https://github.com/joshika39/yozora ~/.config/yozora
+```
+
+Then clone this repo:
+```sh
+# Remove the default i3 config
+rm -rf ~/.config/i3
+
+# Clone this repo
+git clone https://github.com/joshika39/yozora-i3 ~/.config/i3
+
+# Install the dependencies
+cd ~/.config/i3 && bash ~/.config/yozora/install.sh
+```
+
+
