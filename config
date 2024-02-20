@@ -17,13 +17,13 @@ gaps outer 4
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps inverse_outer
-# smart_gaps on
+smart_gaps on
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders no_gaps 
 
-set $monitor1 eDP-1
-set $monitor2 HDMI-1-0
+# set $monitor1 eDP-1
+# set $monitor2 HDMI-1-0
 
 set $mod Mod4
 set $mod2 Mod1
@@ -57,6 +57,8 @@ bindsym --release Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 
 bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboard.sh
 
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -80,15 +82,12 @@ mode "layouts"{
         bindsym $mod+Shift+s mode "default"
 }
 
-
-# Layout management
-bindsym $mod+Shift+s exec --no-startup-id source ~/.config/i3/scripts/save-layout.sh
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
 # alternatively, you can use the arrow keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -100,6 +99,7 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
 # alternatively, you can use the arrow keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -128,7 +128,6 @@ bindsym $mod+F2 layout tabbed
 bindsym $mod+F1 layout toggle split
 
 bindsym $mod2+Shift+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -215,15 +214,15 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
-workspace $ws1 output $monitor1
-workspace $ws2 output $monitor1
-workspace $ws3 output $monitor1
-workspace $ws4 output $monitor1
-workspace $ws5 output $monitor1
-workspace $ws6 output $monitor1
-workspace $ws7 output $monitor2
-workspace $ws8 output $monitor2
-workspace $ws9 output $monitor2
+# workspace $ws1 output $monitor1
+# workspace $ws2 output $monitor1
+# workspace $ws3 output $monitor1
+# workspace $ws4 output $monitor1
+# workspace $ws5 output $monitor1
+# workspace $ws6 output $monitor1
+# workspace $ws7 output $monitor2
+# workspace $ws8 output $monitor2
+# workspace $ws9 output $monitor2
 
 set $base00 #e7e5f6
 set $base01 #212c8c

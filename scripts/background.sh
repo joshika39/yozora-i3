@@ -15,7 +15,7 @@ url="https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&collections=
 
 # Get the image fron a GET endpoint
 image_url=$(curl $url | jq -r '.urls.full')
-image_path="$HOME/.config/i3/background.jpg"
+image_path="$HOME/.background.jpg"
 
 [ -z "$image_url" ] && echo "Image url is empty" && exit 1
 
