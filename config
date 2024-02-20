@@ -57,6 +57,8 @@ bindsym --release Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 
 bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboard.sh
 
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
