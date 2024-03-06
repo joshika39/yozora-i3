@@ -6,3 +6,10 @@ if ! [ -f $HOME/.config/i3/install.sh ]; then
     exit 1
 fi
 
+if ! [ -d $HOME/.config/i3/pkgs ]; then
+    echo "unhealthy"
+    exit 1
+fi
+
+echo "healthy"
+
