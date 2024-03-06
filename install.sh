@@ -7,6 +7,3 @@ if ! [ -f ~/.config/yozora ]; then
 fi
 
 bash ~/.config/yozora/install.sh
-
-sudo bash ~/.config/yozora/tools/install-packages.sh ~/.config/i3/packages.conf
-bash ~/.config/yozora/tools/install-packages.sh ~/.config/i3/packages.conf
