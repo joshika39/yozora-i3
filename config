@@ -31,6 +31,7 @@ set $mod2 Mod1
 # AUTOSTART
 
 exec --no-startup-id picom -b
+exec_always --no-startup-id $HOME/.config/i3/scripts/autostart.sh
 # exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ibus-daemon -drx &
 exec_always --no-startup-id $HOME/.config/i3/scripts/background.sh
@@ -47,6 +48,7 @@ bindsym $mod2+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -sho
 bindsym $mod2+Shift+c exec --no-startup-id emoji-picker
 bindsym $mod2+Shift+k exec --no-startup-id screenkey --show-settings
 set $refresh_i3status killall -SIGUSR1 i3status
+
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
