@@ -35,6 +35,7 @@ exec_always --no-startup-id $HOME/.config/i3/scripts/autostart.sh
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ibus-daemon -drx &
 exec_always --no-startup-id $HOME/.config/i3/scripts/background.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id greenclip daemon>/dev/null
 floating_modifier $mod 
 
