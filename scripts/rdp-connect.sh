@@ -70,6 +70,8 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+size=$(rofi -dmenu -p "Select resolution" -lines 0 <<< "800x600\n1024x768\n1280x720\n1280x800\n1366x768\n1920x1080\n1920x1200\n2560x1440\n3840x2160")
+
 echo "Running freerdp /v:$selected_server /u:$username /p:$password" +clipboard /sound:sys:pulse
-freerdp-shadow-cli3 /v:$selected_server /u:$username /p:$password
+	xfreerdp /size:$size /p:$password /u:$username +clipboard /sound:sys:pulse /v:$selected_server
 
