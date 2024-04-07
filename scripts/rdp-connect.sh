@@ -3,10 +3,6 @@
 # This script is used to connect to a remote desktop server with a rofi menu wich lists all the available servers.
 # Then it uses xfreerdp to connect to the selected server. And prompts for the password and username.
 
-
-# List of servers
-# Check if tailscale is installed
-
 input_menu() {
   local prompt=$1
   local options=$2
@@ -71,7 +67,10 @@ if [ $? -ne 0 ]; then
 fi
 
 size=$(rofi -dmenu -p "Select resolution" -lines 0 <<< "800x600\n1024x768\n1280x720\n1280x800\n1366x768\n1920x1080\n1920x1200\n2560x1440\n3840x2160")
+if [ -z "$size" ]; then
+    dunstify "RDP Connect" -u critical "No resolution selected" --timeout 500 --icon=dialog-error
+    exit 1
+fi
 
-echo "Running freerdp /v:$selected_server /u:$username /p:$password" +clipboard /sound:sys:pulse
-	xfreerdp /size:$size /p:$password /u:$username +clipboard /sound:sys:pulse /v:$selected_server
+xfreerdp /size:$size /p:$password /u:$username +clipboard /sound:sys:pulse /v:$selected_server
 
