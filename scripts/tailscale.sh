@@ -45,7 +45,9 @@ fi
 
 if [ "$selected" == "Select Exit Node" ]; then
     # Show the list of exit nodes with the "<ip> - <hostname>" format
-    selected=$(tailscale status | grep -v "exit node" | awk '{print $1" - "$2}' | rofi -dmenu -p "Select Exit Node")
+    # The exit nodes are the ones with the "exit node" in the line
+    # Show in a rofi menu
+    selected=$(tailscale status | grep "exit node" | awk '{print $1" - "$2}' | rofi -dmenu -p "Select Exit Node")
 
     if [ -z "$selected" ]; then
         exit
@@ -62,8 +64,7 @@ if [ "$selected" == "Select Exit Node" ]; then
     fi
 
     if [ "$selected" != "$selected_hostname" ]; then
-        # sudo tailscale up --exit-node $selected_ip$lan_command
-        echo "sudo tailscale up --exit-node $selected_ip$lan_command"
+        sudo tailscale up --exit-node=$selected_ip$lan_command
     fi
     exit
 fi
