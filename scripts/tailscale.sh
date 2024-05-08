@@ -13,3 +13,13 @@ then
     exit
 fi
 
+# If script is ran without any arguments, show the main menu
+# Main menu options: Start: if not running; Stop, Restart, Select Exit Node, Reset: if running
+
+# Use Rofi to show the menu
+
+# is_running is false when the output of tailscale status is not "Tailscale is stopped"
+is_running=$(tailscale status | grep -q "Tailscale is stopped"; echo $?)
+
+echo "is_running: $is_running"
+
