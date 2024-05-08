@@ -1,19 +1,10 @@
 #!/bin/bash
 
-# Tailscale management options with rofi
-
-# Usage: tailscale.sh [--select-exitnode] [--reset] [--down]
-
-# If tailscale is not installed, exit
-
 if ! command -v tailscale &> /dev/null
 then
     echo "tailscale could not be found"
     exit
 fi
-
-# If script is ran without any arguments, show the main menu
-# Main menu options: Start: if not running; Stop, Restart, Select Exit Node, Reset: if running
 
 is_running=$(tailscale status | grep -q "Tailscale is stopped"; echo $?)
 
@@ -44,9 +35,6 @@ if [ "$selected" == "Restart" ]; then
 fi
 
 if [ "$selected" == "Select Exit Node" ]; then
-    # Show the list of exit nodes with the "<ip> - <hostname>" format
-    # The exit nodes are the ones with the "exit node" in the line
-    # Show in a rofi menu
     selected=$(tailscale status | grep "exit node" | awk '{print $1" - "$2}' | rofi -dmenu -p "Select Exit Node")
 
     if [ -z "$selected" ]; then
