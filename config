@@ -62,6 +62,8 @@ bindsym $mod2+Shift+p exec --no-startup-id ~/.config/i3/scripts/select-primary-d
 bindsym $mod+Ctrl+space exec --no-startup-id ~/.config/i3/scripts/change-keyboard.sh
 bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/rdp-connect.sh start
 bindsym $mod+o exec --no-startup-id ~/.config/i3/scripts/rdp-connect.sh disconnect
+bindsym $mod+t exec --no-startup-id ~/.config/i3/scripts/tailscale.sh 
+
 
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
