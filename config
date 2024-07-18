@@ -30,7 +30,7 @@ set $mod2 Mod1
 
 # AUTOSTART
 
-exec --no-startup-id picom -b
+exec --no-startup-id picom -CGb
 exec_always --no-startup-id $HOME/.config/i3/scripts/autostart.sh
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id ibus-daemon -drx &
@@ -72,8 +72,8 @@ bindsym $mod+Shift+minus move scratchpad
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+q exec kitty tmux
-bindsym $mod+e exec kitty ranger
+bindsym $mod+q exec alacritty
+bindsym $mod+e exec alacritty -e ranger
 
 mode "layouts"{
 	bindsym 1 exec --no-startup-id ~/.config/i3/scripts/save-layout.sh 1
@@ -169,8 +169,8 @@ for_window [window_role="task_dialog"]                  floating enable
 for_window [window_role="Preferences"]                  floating enable
 for_window [window_type="dialog"]                       floating enable 
 for_window [window_type="menu"]                         floating enable
-# for_window [class="bitwarden"]                    floating enable
-# for_window [window_type="save_as"]                      floating enable
+for_window [class="bitwarden"]                    floating enable
+for_window [window_type="save_as"]                      floating enable
 # for_window [window_type="copyq"]                        floating enable
 # for_window [window_type="gcolor"]			floating enable
 
